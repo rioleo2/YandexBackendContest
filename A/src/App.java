@@ -32,7 +32,7 @@ public class App {
 
         int N;
 
-        System.out.print("Введите количество людей: ");
+        // System.out.print("Введите количество людей: ");
         N = scanner.nextInt();
 
         String[] CSVData = new String[N];
@@ -47,23 +47,25 @@ public class App {
 
         scanner.nextLine();
 
-        System.out.println("Введите данные людей в формате CSV:");
+        // System.out.println("Введите данные людей в формате CSV:");
         for (int i = 0; i < N; i++) {
             CSVData[i] = scanner.nextLine();
             PersonData[i] = CSVData[i].split(",");
-            System.out.println(
-                    "Фамилия: " + PersonData[i][0] + ", Имя: " + PersonData[i][1] + ", Отчество: " + PersonData[i][2]
-                            + ", Дата рождения: " + PersonData[i][3] + "." + PersonData[i][4] + "." + PersonData[i][5]);
+            // System.out.println(
+            // "Фамилия: " + PersonData[i][0] + ", Имя: " + PersonData[i][1] + ", Отчество:
+            // " + PersonData[i][2]
+            // + ", Дата рождения: " + PersonData[i][3] + "." + PersonData[i][4] + "." +
+            // PersonData[i][5]);
         }
         scanner.close();
 
         for (int i = 0; i < N; i++) {
             FIO[i] = PersonData[i][0] + PersonData[i][1] + PersonData[i][2];
-            System.out.println("ФИО человека: " + FIO[i]);
+            // System.out.println("ФИО человека: " + FIO[i]);
             countOfUniqueCharactersArray[i] = findCountOfUniqueCharacters(FIO[i]); // количество уникальных букв в ФИО
-                                                                                   // первого
-            // человека
-            System.out.println("Количество уникальных букв в ФИО: " + countOfUniqueCharactersArray[i]);
+                                                                                   // первого человека
+            // System.out.println("Количество уникальных букв в ФИО: " +
+            // countOfUniqueCharactersArray[i]);
 
         }
 
@@ -74,27 +76,28 @@ public class App {
             sumOfNumbersArray[i] = findSumOfNumbersInBirthdayDate(fullBirthNumberArray[i]); // сумма цифр в дне и месяце
                                                                                             // рождения
 
-            System.out.println("Сумма цифр в полном году рождения: " + sumOfNumbersArray[i]);
+            // System.out.println("Сумма цифр в полном году рождения: " +
+            // sumOfNumbersArray[i]);
         }
 
         for (int i = 0; i < N; i++) {
             firstCharactersArray[i] = (int) PersonData[i][0].toUpperCase().charAt(0) - 64;
-            System.out.println(
-                    "Порядковый номер по алфавиту первого символа фамилии: "
-                            + firstCharactersArray[i]);
+            // System.out.println(
+            // "Порядковый номер по алфавиту первого символа фамилии: "
+            // + firstCharactersArray[i]);
         }
 
         for (int i = 0; i < N; i++) {
             fullCiphersArray[i] = countOfUniqueCharactersArray[i] + sumOfNumbersArray[i] * 64
                     + firstCharactersArray[i] * 256;
             hexFullCiphersArray[i] = Integer.toHexString(fullCiphersArray[i]); // переводим в шестнадцатеричный вид
-            System.out.println("Ключ: " + fullCiphersArray[i]);
-            System.out.println("Ключ(16) : " + hexFullCiphersArray[i]);
+            // System.out.println("Ключ: " + fullCiphersArray[i]);
+            // System.out.println("Ключ(16) : " + hexFullCiphersArray[i]);
         }
 
         for (int i = 0; i < N; i++) {
             for (int j = hexFullCiphersArray[i].length() - 3; j < hexFullCiphersArray[i].length(); j++) {
-                System.out.print(hexFullCiphersArray[i].charAt(j));
+                System.out.print(hexFullCiphersArray[i].toUpperCase().charAt(j));
             }
             System.out.print(" ");
         }
